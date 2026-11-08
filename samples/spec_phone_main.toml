@@ -1,0 +1,57 @@
+# (가상 SAMPLE) 설계사양서 = 모델별 설정 파일.
+# 실제 고객 사양서가 아니다. 수치는 전부 [가정] — 사내 기준을 받으면 교체한다.
+
+[spec]
+customer = "S사 휴대폰 사업부 (가상)"
+product = "휴대폰 메인 PCB (가상 SAMPLE)"
+purpose = "2차면 SMT 시 1차면 부품 회피용 안착 지그"
+pcb_size = "70 x 52 mm (L자)"
+pcb_thickness = "0.8 mm"
+tooling_hole = "Ø2.0 x 3 (스크류 Ø1.6 은 위치결정에 쓰지 않음)"
+
+[pcb]
+face_down = "bottom"
+board_max_thickness = 1.2
+
+[jig]
+wall_margin = 15.0
+pocket_depth = 0.6
+outline_clearance = 0.10
+comp_clearance = 0.30
+depth_clearance = 0.30
+min_floor = 3.0
+merge_gap = 1.0
+min_support_band = 1.0
+min_support_ratio = 0.7
+max_unsupported_span_ratio = 0.6
+
+[pins]
+hole_min_d = 1.9
+hole_max_d = 2.1
+pin_clearance = 0.05
+pin_protrusion = 0.5
+
+[drawing2d]
+board_thickness = 0.8
+default_height = 1.5
+bottom_view_mirrored = true
+join_tol = 0.01
+max_hole_d = 6.0
+min_board_size = 5.0
+tile_ratio = 0.9
+mirror_tol = 0.01
+bottom_labels = ["BOTTOM", "BOT", "1차", "B면", "SIDE B", "하면"]
+top_labels = ["TOP", "2차", "A면", "SIDE A", "상면"]
+
+[export]
+stl_tolerance = 0.01
+
+[drawing]
+company = "한국성전"
+part_name = "PCB 안착 지그 (2차면 SMT)"
+drawing_no = "KSJ-SAMPLE-0001"
+model = "PHONE-MAIN-SAMPLE (가상)"
+material = "ESD-PETG"
+process = "3D 프린팅 (FDM)"
+tolerance_note = "지시 없는 치수 공차 ±0.1"
+text_height = 2.5

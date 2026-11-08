@@ -1,0 +1,2 @@
+cadquery>=2.8,<3
+pytest>=9

@@ -1,0 +1,52 @@
+# jigauto 기본 설정 — 수치는 전부 여기에서 읽는다 (코드 하드코딩 금지).
+# 근거 없는 값에는 # [가정] 을 단다. 사내 기준값을 받으면 교체한다.
+
+[pcb]
+face_down = "bottom"       # 지그를 향하는 면. "bottom" 또는 "top"   # [가정]
+board_max_thickness = 3.2  # 이 두께 이하 솔리드 중 가장 넓은 것 = 기판 (mm)  # [가정]
+
+[jig]
+wall_margin = 10.0         # 기판·포켓 범위 바깥으로 남기는 살 (mm)      # [가정]
+pocket_depth = 1.0         # 안착 포켓 깊이 (mm)                         # [가정]
+outline_clearance = 0.2    # 기판 외곽 ↔ 안착 포켓 벽 간격 (mm)          # [가정]
+comp_clearance = 0.5       # 부품 bbox ↔ 회피 포켓 벽 간격 (mm)          # [가정]
+depth_clearance = 0.5      # 부품 높이에 더하는 깊이 여유 (mm)           # [가정]
+min_floor = 2.0            # 가장 깊은 포켓 아래 남길 최소 바닥 두께 (mm) # [가정]
+merge_gap = 1.0            # 포켓 사이 벽이 이 값 미만이면 병합 (mm)      # [가정] FDM 최소 벽
+min_support_band = 1.0     # 남은 받침띠가 이 폭보다 좁으면 WARN (mm)      # [가정]
+                           # merge_gap(제작 최소 벽)과 뜻이 다르다 — 이쪽은 '받침으로서 충분한 폭'.
+                           # 올리면 포켓 사이 얇은 받침 리브부터 걸린다 (실측: 1.5 → (가상)휴대폰 1건)
+min_support_ratio = 0.7    # PCB 받침 비율 하한 (미만이면 WARN)           # [가정]
+max_unsupported_span_ratio = 0.6  # 받침 없는 연결 영역이 기판 변의 이 비율을 넘으면 WARN  # [가정]
+                           # 근거: 실측 분포뿐 — 양호 (가상)휴대폰 0.28 / 문제 (가상)밀집 0.92
+
+[pins]
+hole_min_d = 2.0           # 위치결정 핀 후보 홀 지름 하한 (mm)          # [가정]
+hole_max_d = 4.0           # 위치결정 핀 후보 홀 지름 상한 (mm)          # [가정]
+pin_clearance = 0.1        # 홀 지름 − 핀 지름 (mm)                      # [가정]
+pin_protrusion = 1.0       # 기판 윗면 위로 나오는 핀 길이 (mm)          # [가정]
+
+[drawing2d]
+board_thickness = 1.0      # 2D 도면에는 없음 — 일괄 적용 (mm)           # [가정]
+default_height = 1.5       # 2D 도면에는 없음 — 부품 높이 일괄 (mm)      # [가정]
+bottom_view_mirrored = true # Bottom 뷰가 좌우 반전인지                   # [가정]
+join_tol = 0.01            # 낱개 선을 잇는 끝점 공차 (mm)               # [가정]
+max_hole_d = 6.0           # 이 지름 이하 원을 홀로 본다 (mm)            # [가정]
+min_board_size = 5.0       # 기판 후보의 짧은 변 하한 (mm)               # [가정]
+tile_ratio = 0.9           # 자식이 이 비율 이상을 채우면 표제란으로 본다 # [가정]
+mirror_tol = 0.01          # Top 뷰 대조 대칭차 면적 허용 비율           # [가정]
+bottom_labels = ["BOTTOM", "BOT", "1차", "B면", "SIDE B", "하면"]
+top_labels = ["TOP", "2차", "A면", "SIDE A", "상면"]
+
+[export]
+stl_tolerance = 0.01       # STL 선형 공차 (mm)                          # [가정]
+
+[drawing]
+company = "한국성전"
+part_name = "PCB 안착 지그"
+drawing_no = "미지정"
+model = "미지정"
+material = "미지정"
+process = "미지정"
+tolerance_note = "지시 없는 치수 공차: 미지정"
+text_height = 2.5          # 도면 문자 높이 (mm)                         # [가정]
